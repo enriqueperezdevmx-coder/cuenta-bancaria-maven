@@ -2,7 +2,49 @@
 # MP-5 Cazar errores. Rompe tu pom.xml a propósito, como lo dejaría un compañero con prisa.
 set -u
 bueno=.pom-bueno.xml
-nucleo() { python3 -c "$(echo 'IyDDumNsZW8gZGVsIHBvbS1yb3RvLnNoIChzZSBpbmNydXN0YSBlbiBiYXNlNjQgcGFyYSBxdWUgZWwgYWx1bW5vIG5vIHZlYSBsYXMgcmVzcH1lc3RhcyBhbCBwZWdhciBjcmVhci1wcm95ZWN0by5zaCkuCiMgVXNvOiBweXRob24zIC0gcXVlamFzLnB5IDxyb21wZXIgTjxyZXZpc2FyPiAgICAodHJhYmFqYSBzb2JyZSBwb20ueG1sIHkgLnBvbS1idWVuby54bWwgZW4gbGEgY2FycGV0YSBhY3R1YWwpCmltcG9ydCByZSwgc3lzLCBkaWZmbGliCkJVRU5PID0gJy5wb20tYnVlbm8ueG1sJw==; echo 'ZGVmIGxlZXIocCk6IHJldHVybiBvcGVuKHAsIGVuY29kaW5nPSd1dGYtOCcpLnJlYWQoKS5yZXBsYWNlKCdcciAgbicsICdcbicpCmRlZiBub3JtKHMpOgogICAgcyA9IHJlLnN1YihyJzwhLS0uKj8tLT4nLCAnJywgcywgZmxhZ3M9cmUuUykKICAgICMgRW4gSmFja3NvbiwgPHNjb3BlPmNvbXBpbGU8L3Njb3BlPiA9IG5vIHBvbmVyIHNjb3BlLiBUYW1iacOpbiBlcyB1biBhcnJlZ2xvIHbDoWxpZG8gZGUgbGEgcXVlamEgNAogICAgcyA9IHJlLnN1YihyJyg8dmVyc2lvbj5cJFx7amFja3NvblwudmVyc2lvbnx9PC92ZXJzaW9uPilccyo8c2NvcGU+XHMqY29tcGlsZVxzKjwvc2NvcGU+Jywgcic8dmVyc2lvbj5cJFx7amFja3NvblwudmVyc2lvbnx9PC92ZXJzaW9uPicsIHMpCiAgICAjIFNlIGNvbGFwc2FuIGxvcyBlc3BhY2lvcyAobm8gc2UgYm9ycmFuOiDCqTIuMjIuIDPCuyBubyBlcyDCqTIuMjIuM8K7KSB5IHNlIHF1aXRhbiBzb2xvIGxvcyBxdWUgcm9kZWFuIGV0aXF1ZXRhcy4KICAgIHMgPSByZS5zdWIocidccysnLCAnICcsIHMpCiAgICByZXR1cm4gcmUuc3ViKHInID8oPDw/W14+XSo+KSA/Jywgcic8XDFyLCBzKS5zdHJpcCgpCkRPTl9TID0gewogICAgJzEnOiAocic8dmVyc2lvbj5cJFx7amFja3NvblwudmVyc2lvbnx9PC92ZXJzaW9uPlxzKik8L2RlcGVuZGVuY3k+Jywgcic8dmVyc2lvbj5cJFx7amFja3NvblwudmVyc2lvbnx9PC92ZXJzaW9uPlxzKjwvcHJvamVjdD4nKSwKICAgICcyJzogKHInPG1hdmVuXC5jb21waWxlclwucmVsZWFzZT5ccyoxN1xzKjwvbWF2ZW5cLmNvbXBpbGVyXC5yZWxlYXNlPicsICc8bWF2ZW4uY29tcGlsZXIucmVsZWFzZT4yMTwvbWF2ZW4uY29tcGlsZXIucmVsZWFzZT4nKSwKICAgICczJzogKHInPGphY2tzb25cLnZlcnNpb24+XHMqMi4yMi4zXHMqPC9qYWNrc29uXC52ZXJzaW9uPicsICc8amFja3Nvbi52ZXJzaW9uPjIuMjIuMzA8L2phY2tzb24udmVyc2lvbj4nKSwKICAgICc0JzogKHInKFxuKFsgXHRdKik8dmVyc2lvbj5cJFx7amFja3NvblwudmVyc2lvbnx9PC92ZXJzaW9uPiknLCByJ1wxXG5cMjxzY29wZT50ZXN0PC9zY29wZT4nKSwKICAgICc1JzogKHInPG1haW5DbGFzcz5ccypjb21cLmFjYWRlbWlhXC5iYW5jb1wuQXBwXHMqPC9tYWluQ2xhc3M+JywgJzxtYWluQ2xhc3M+Y29tLmFjYWRlbWlhLmJhbmNvLkFwbGljYWNpb248L21haW5DbGFzcz4nKSwKfQ==; echo 'aWYgc3lzLmFyZ3ZVsMV0gPT0gJ3JvbXBlcic6CiAgICBwYXRyb24sIHJlZW1wbGF6byA9IFJPTVAuU1RzeXMuYXJndlsyXV0KICAgIHMsIG4gPSByZS5zdWJuKHBhdHJvbiwgcmVlbXBsYXpvLCBsZWVyKEJVRU5PKSwgY291bnQ9MSkKICAgIGlmIG4gIT0gMTogc3lzLmV4aXQoMykKICAgIG9wZW4oJ3BvbS54bWwnLCAndycsIGVuY29kaW5nPSd1dGYtOCcpLndyaXRlKHMpCmVsc2U6CiAgICBidWVubywgdHV5byA9IGxlZXIoQlVFTk8pLCBsZWVyKCdwb20ueG1sJykKICAgIGlmIG5vcm0oYnVlbm8pID09IG5vcm0odHV5byk6IHByaW50KCfinIUgVHUgcG9tLnhtbCBxdWVkw7MgaWd1YWwgYWwgYnVlbm8uJyk7IHN5cy5leGl0KDApCiAgICBiID0gW2wuc3RyaXAoKSBmb3IgbCBpbiBidWVuby5zcGxpdCgnXG4nKV0KICAgIHQgPSBbbC5zdHJpcCgpIGZvciBsIGluIHR1eW8uc3BsaXQoJ1xuJyldCiAgICBsaW5lYXMgPSBzb3J0ZWQoe2oxICsgMSBmb3Igb3AsIGkxLCBpMiwgajEsIGoyIGluIGRpZmZsaWIuU2VxdWVuY2VNYXRjaGVyKE5vbmUsIGIsIHQsIGF1dG9qdW5rPUZhbHNlKS5nZXRfb3Bjb2RlcygpIGlmIG9wICE9ICdlcXVhbCcgYW5kIGFueSh4IGZvciB4IGluIGJbaTE6aTJdICsgdFtqMTpqMl0pfSkKICAgIGRvbmRlID0gJyB5ICcuam9pbihzdHIobWluKGwsIGxlbih0KSkpIGZvciBsIGluIGxpbmVhc1s6M10pIG9yICc/JwogICAgcHJpbnQoZifinVggVG9kYXbDrWEgbm86IHR1IHBvbS54bWwgZXMgZGlzdGludG8gZGVsIGJ1ZW5vIGNlcmNhIGRlIGxhIGzDrW5lYSB7ZG9uZGV9LiBWdWVsdmUgYSBsZWVyIGxvIHF1ZSBkaWpvIE1hdmVuLicpCiAgICBzeXMuZXhpdCgxKQ==' | base64 -d)" "$@"; }
+
+nucleo() {
+python3 - "$@" << 'FIN_PY'
+import re, sys, difflib
+
+BUENO = '.pom-bueno.xml'
+
+def leer(p):
+    return open(p, encoding='utf-8').read().replace('\r\n', '\n')
+
+def norm(s):
+    s = re.sub(r'<!--.*?-->', '', s, flags=re.S)
+    s = re.sub(r'(<version>\$\{jackson\.version\}</version>)\s*<scope>\s*compile\s*</scope>', r'\1', s)
+    s = re.sub(r'\s+', ' ', s)
+    return re.sub(r' ?(</?[^>]+>) ?', r'\1', s).strip()
+
+ROMPER = {
+    '1': (r'(<version>\$\{jackson\.version\}</version>\s*)</dependency>', r'\1</project>'),
+    '2': (r'<maven\.compiler\.release>\s*17\s*</maven\.compiler\.release>', r'<maven.compiler.release>21</maven.compiler.release>'),
+    '3': (r'<jackson\.version>\s*2\.22\.3\s*</jackson\.version>', r'<jackson.version>2.22.30</jackson.version>'),
+    '4': (r'(\n([ \t]*)<version>\$\{jackson\.version\}</version>)', r'\1\n\2<scope>test</scope>'),
+    '5': (r'<mainClass>\s*com\.academia\.banco\.App\s*</mainClass>', r'<mainClass>com.academia.banco.Aplicacion</mainClass>'),
+}
+
+if sys.argv[1] == 'romper':
+    patron, reemplazo = ROMPER[sys.argv[2]]
+    s, n = re.subn(patron, reemplazo, leer(BUENO), count=1)
+    if n != 1:
+        sys.exit(3)
+    open('pom.xml', 'w', encoding='utf-8').write(s)
+else:
+    bueno, tuyo = leer(BUENO), leer('pom.xml')
+    if norm(bueno) == norm(tuyo):
+        print('✔ Tu pom.xml quedó igual al bueno.')
+        sys.exit(0)
+    b = [l.strip() for l in bueno.split('\n')]
+    t = [l.strip() for l in tuyo.split('\n')]
+    lineas = sorted({j1 + 1 for op, i1, i2, j1, j2 in difflib.SequenceMatcher(None, b, t, autojunk=False).get_opcodes() if op != 'equal' and any(x for x in b[i1:i2] + t[j1:j2])})
+    donde = ' y '.join(str(min(l, len(t))) for l in lineas[:3]) or '?'
+    print(f'✘ Todavía no: tu pom.xml es distinto del bueno cerca de la línea {donde}. Vuelve a leer lo que dijo Maven.')
+    sys.exit(1)
+FIN_PY
+}
 
 if [ "${1:-}" = "revisar" ]; then
   if [ ! -f "$bueno" ]; then echo "Todavía no rompes nada: corre ./pom-roto.sh 1"; exit 2; fi
